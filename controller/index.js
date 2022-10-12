@@ -20,3 +20,15 @@ exports.kotaLists = (req, res) => {
           .then(response => res.json(response.data))
           .catch(err => res.send(err))
 }
+
+exports.ongkosKirim = (req, res) => {
+    const param = req.params
+    axios.post('/cost', {
+        origin: param.asal,
+        destination: param.tujuan,
+        weight: param.berat,
+        courier: param.kurir
+      })
+      .then(response => res.json(response.data))
+      .catch(err => res.send(err))
+  }
