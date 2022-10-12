@@ -13,3 +13,10 @@ exports.provinsi = (req, res) => {
 exports.hello = (req, res) => {
     res.send('Hello world')
 }
+
+exports.kotaLists = (req, res) => {
+        const id = req.params.provId
+        axios.get(`/city?province=${id}`)
+          .then(response => res.json(response.data))
+          .catch(err => res.send(err))
+}
